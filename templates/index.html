@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<DIV style="text-align: center;">
+    <h2>  SEGUNDO PARCIAL TEM-742</h2>
+    <h2>  NOMBRE:ARIEL ALI ADUVIRI</h2>
+    <h2>  CARNET: 12422893 </h2>
+</DIV>
+<h1>GESTION DE PRODUCTOS</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product['id'] }}</td>
+            <td>{{ product['nombre'] }}</td>
+            <td>{{ product['cantidad'] }}</td>
+            <td>{{ product['precio'] }}</td>
+            <td>{{ product['fecha_vencimiento'] }}</td>
+            <td>{{ product['categoria'] }}</td>
+            <td>
+                <a href="{{ url_for('edit_product', product_id=product['id']) }}">Editar</a> |
+                <a href="{{ url_for('delete_product', product_id=product['id']) }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
